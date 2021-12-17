@@ -1,10 +1,24 @@
 package com.example.mbjsmbjs
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.renderscript.Sampler
+import android.util.Log
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
+import com.example.mbjsmbjs.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import java.util.*
+import kotlin.reflect.typeOf
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,11 +26,33 @@ class MainActivity : AppCompatActivity() {
     lateinit var tab2: Tab2
     lateinit var tab3: Tab3
 
+    var user: Map<*,*>? = null
+
+    val database = Firebase.database
+    val myRef = database.getReference("userInfo")
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        val bundle = Bundle()
+        bundle.putString("test", "test msg")
+
         setContentView(R.layout.activity_main)
 
+        // firebase code
+        FirebaseApp.initializeApp(this)
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                user = snapshot.child("C8ATnnxBGXbpkq10t45FqkFfqgr2").getValue() as Map<*, *>
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
         tab1 = Tab1()
+        tab1.arguments = bundle
+
         tab2 = Tab2()
         tab3 = Tab3()
         // 프레그먼트 클래스 자체를 객체화 했네 ㅋ
@@ -25,9 +61,9 @@ class MainActivity : AppCompatActivity() {
 
         var tabLayout : TabLayout = findViewById<TabLayout>(R.id.tl_main);
         var frameLayout : FrameLayout = findViewById(R.id.fl_main);
-        tabLayout.addTab(tabLayout.newTab().setText("WORK OUT"))
-        tabLayout.addTab(tabLayout.newTab().setText("DIET"))
-        tabLayout.addTab(tabLayout.newTab().setText("COMMUNITY"))
+        tabLayout.addTab(tabLayout.newTab().setText("추천 운동"))
+        tabLayout.addTab(tabLayout.newTab().setText("추천 식단"))
+        tabLayout.addTab(tabLayout.newTab().setText("커뮤니티"))
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -56,6 +92,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         )
+
 
     }
 

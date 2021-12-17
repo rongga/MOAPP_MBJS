@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "602596744928",
+    "firebase_url": "https://mbjs-c9d60-default-rtdb.firebaseio.com",
+    "project_id": "mbjs-c9d60",
+    "storage_bucket": "mbjs-c9d60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602596744928:android:6638f5ff99621ccd883a85",
+        "android_client_info": {
+          "package_name": "com.example.mbjsmbjs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602596744928-p3u25a2topriqvj8dc8ie85lpl1jsmvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf1aC53QWmIIYdzumGqZiQ3DCSUhbnd5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602596744928-p3u25a2topriqvj8dc8ie85lpl1jsmvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

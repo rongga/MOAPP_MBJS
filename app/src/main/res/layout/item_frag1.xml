@@ -1,55 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <LinearLayout
-        android:weightSum="10"
-        android:orientation="horizontal"
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content"
+        app:videoId="ghhCpO3pB6k"
+        android:id="@+id/videoItem"/>
 
-        <ImageButton
-            android:layout_weight="4"
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/iv_itemOfFrag1"
-            android:layout_margin="5dp"
-            android:layout_width="0dp"
-            android:layout_height="90dp"/>
+    <TextView
+        android:id="@+id/diseaseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="질병" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tv_itemOfFrag1_nameOfWorkout"
-                android:gravity="center"
-                android:text="test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"/>
-            <TextView
-                android:id="@+id/tv_itemOfFrag1_targetOfWorkout"
-                android:gravity="center"
-                android:text="test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"/>
-            <TextView
-                android:id="@+id/tv_itemOfFrag1_hardness"
-                android:gravity="center"
-                android:text="test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"/>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/strengthenTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="운동 부위" />
 
 
 </LinearLayout>

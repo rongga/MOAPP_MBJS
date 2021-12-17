@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" default="false" project-jdk-name="15" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/jyj/Desktop/MOAPP_MBJS/app/src/main/res/layout/activity_regi.xml" value="0.259375" />
+        <entry key="..\:/Users/jyj/Desktop/MOAPP_MBJS/app/src/main/res/layout/fragment_tab1.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/jyj/Desktop/MOAPP_MBJS/app/src/main/res/layout/item_frag1.xml" value="0.5" />
+        <entry key="..\:/Users/jyj/Desktop/MOAPP_MBJS/app/src/main/res/layout/item_frag1_save.xml" value="0.21197916666666666" />
+        <entry key="..\:/Users/jyj/Desktop/MOAPP_MBJS/app/src/main/res/layout/item_frag2.xml" value="0.21197916666666666" />
+        <entry key="..\:/Users/jyj/Desktop/MOAPP_MBJS/app/src/main/res/layout/item_frag3.xml" value="0.21197916666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

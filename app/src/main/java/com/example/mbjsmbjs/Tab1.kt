@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mbjsmbjs.databinding.FragmentTab1Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,9 +23,12 @@ class Tab1 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var _binding : FragmentTab1Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -35,17 +39,18 @@ class Tab1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        println("sibald")
         val view = inflater.inflate(R.layout.fragment_tab1, container, false)
 
         var dataList = ArrayList<WorkoutData>()
         var recyclerView : RecyclerView = view.findViewById(R.id.rv_frag1)
 
-        //여긴 임의 데이터고 실제로는 파베 데이터 넣어야함
-        dataList.add(WorkoutData("a","팔굽혀펴기","가슴",3))
-        dataList.add(WorkoutData("b","풀업","등",3))
-        dataList.add(WorkoutData("c","스쿼트","하체",3))
-        dataList.add(WorkoutData("d","바벨컬","팔",3))
+
+//        //여긴 임의 데이터고 실제로는 파베 데이터 넣어야함
+//        dataList.add(WorkoutData("a","팔굽혀펴기","가슴",3))
+//        dataList.add(WorkoutData("b","풀업","등",3))
+//        dataList.add(WorkoutData("c","스쿼트","하체",3))
+//        dataList.add(WorkoutData("d","바벨컬","팔",3))
 
         var adapter = FragAdapter(requireContext())
         adapter.dataList = dataList
@@ -55,8 +60,12 @@ class Tab1 : Fragment() {
         //adapter.notifyDataSetChanged()
 
         // Inflate the layout for this fragment
+        println("hi")
+        println(arguments?.getString("test"))
+        println("bi")
         return view
     }
+
 
     companion object {
         /**
