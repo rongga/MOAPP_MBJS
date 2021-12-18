@@ -3,26 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/videoItem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:videoId="ghhCpO3pB6k"
-        android:id="@+id/videoItem"/>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/diseaseTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_marginVertical="10dp"
         android:text="질병" />
 
     <TextView
         android:id="@+id/strengthenTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
         android:text="운동 부위" />
 
 

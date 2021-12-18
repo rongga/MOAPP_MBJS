@@ -1,7 +1,7 @@
 package com.example.mbjsmbjs
 
 data class WorkoutData(
-    val diseases: String,
-    val strengthen: Map<String, Boolean>,
+    val disease: String,
+    val strengthen: String,
     val vid: String
 )

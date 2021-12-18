@@ -8,27 +8,39 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mbjsmbjs.databinding.FragmentTab1Binding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Tab1.newInstance] factory method to
- * create an instance of this fragment.
- */
+private val DISEASE = mapOf<String, String>(
+    "dementia" to "치매", "arthritis" to "관절염", "diabetes" to "당뇨",
+    "disc" to "디스크", "hypertension" to "고혈압"
+)
+
+private val STRENGTHEN = mapOf<String, String>(
+    "arms" to "팔", "back" to "등", "chest" to "가슴",
+    "core" to "복근", "diet" to "다이어트", "legs" to "다리"
+)
+
+
 class Tab1 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var _binding : FragmentTab1Binding? = null
-    private val binding get() = _binding!!
+
+    var dataList = ArrayList<WorkoutData>()
+    val database = Firebase.database
+    val videoRef = database.getReference("video")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -39,20 +51,44 @@ class Tab1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        println("sibald")
         val view = inflater.inflate(R.layout.fragment_tab1, container, false)
-
-        var dataList = ArrayList<WorkoutData>()
+        var diseaseList: ArrayList<String>
+        var strengthenList: ArrayList<String>
         var recyclerView : RecyclerView = view.findViewById(R.id.rv_frag1)
-
-
-//        //여긴 임의 데이터고 실제로는 파베 데이터 넣어야함
-//        dataList.add(WorkoutData("a","팔굽혀펴기","가슴",3))
-//        dataList.add(WorkoutData("b","풀업","등",3))
-//        dataList.add(WorkoutData("c","스쿼트","하체",3))
-//        dataList.add(WorkoutData("d","바벨컬","팔",3))
-
         var adapter = FragAdapter(requireContext())
+
+        diseaseList = arguments?.getStringArrayList("diseaseList") as ArrayList<String>
+        strengthenList = arguments?.getStringArrayList("strengthenList") as ArrayList<String>
+
+        videoRef.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val allVideo = snapshot.getValue() as Map<String, Map<String,Map<String,Map<String,Int>>>>
+
+                for (disease in diseaseList){
+                    val video_list = allVideo[disease] as Map<String, Map<String, Map<String, Int>>>
+                    for ((vId, vStrengthen) in video_list) {
+                        var sNameTmp = ArrayList<String>()
+                        var check = false
+                        for ((sName,sBool) in vStrengthen["strengthen"] as Map<String,Int>){
+                            if (sBool == 1){
+                                if (strengthenList.contains(sName)){
+                                    sNameTmp.add(STRENGTHEN[sName]!!)
+                                    check = true
+                                }
+                            }
+                        }
+                        if (check) {
+                            dataList.add(WorkoutData(DISEASE[disease]!!, sNameTmp.joinToString(separator = ","), vId))
+                            println(vId)
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
         adapter.dataList = dataList
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -60,9 +96,6 @@ class Tab1 : Fragment() {
         //adapter.notifyDataSetChanged()
 
         // Inflate the layout for this fragment
-        println("hi")
-        println(arguments?.getString("test"))
-        println("bi")
         return view
     }
 

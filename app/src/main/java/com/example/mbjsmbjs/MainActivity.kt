@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.reflect.typeOf
 
 class MainActivity : AppCompatActivity() {
@@ -29,32 +30,52 @@ class MainActivity : AppCompatActivity() {
     var user: Map<*,*>? = null
 
     val database = Firebase.database
-    val myRef = database.getReference("userInfo")
+    val userRef = database.getReference("userInfo")
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         val bundle = Bundle()
-        bundle.putString("test", "test msg")
-
         setContentView(R.layout.activity_main)
+
+        tab1 = Tab1()
+        bundle.putStringArrayList("diseaseList", ArrayList())
+        bundle.putStringArrayList("strengthenList", ArrayList())
+        tab1.arguments = bundle
+        tab2 = Tab2()
+        tab3 = Tab3()
 
         // firebase code
         FirebaseApp.initializeApp(this)
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener{
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 user = snapshot.child("C8ATnnxBGXbpkq10t45FqkFfqgr2").getValue() as Map<*, *>
+                var diseaseList = ArrayList<String>()
+                var strengthenList = ArrayList<String>()
+
+                var mDiseases = user!!["disease"] as Map<*, *>
+                for ((k, v) in mDiseases) {
+                    if (v == true){
+                        diseaseList.add(k as String)
+                    }
+                }
+                var mStrengthen = user!!["strengthen"] as Map<*, *>
+                for ((k, v) in mStrengthen) {
+                    if (v == true){
+                        strengthenList.add(k as String)
+                    }
+                }
+                bundle.putStringArrayList("strengthenList", strengthenList)
+                bundle.putStringArrayList("diseaseList", diseaseList)
+                tab1.arguments = bundle
+
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-        tab1 = Tab1()
-        tab1.arguments = bundle
 
-        tab2 = Tab2()
-        tab3 = Tab3()
         // 프레그먼트 클래스 자체를 객체화 했네 ㅋ
         supportFragmentManager.beginTransaction().add(R.id.fl_main, tab1).commit()
         //이건 시작 프레그먼트를 지정
