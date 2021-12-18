@@ -10,10 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mbjsmbjs.databinding.FragmentTab1Binding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.tasks.await
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,23 +36,25 @@ private val STRENGTHEN = mapOf<String, String>(
     "core" to "복근", "diet" to "다이어트", "legs" to "다리"
 )
 
-
 class Tab1 : Fragment() {
-    lateinit var adapter: FragAdapter
-    var dataList = ArrayList<WorkoutData>()
     val database = Firebase.database
     val videoRef = database.getReference("video")
-    lateinit var diseaseList: ArrayList<String>
-    lateinit var strengthenList: ArrayList<String>
+    var dataList = ArrayList<WorkoutData>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        diseaseList = arguments?.getStringArrayList("diseaseList") as ArrayList<String>
-        strengthenList = arguments?.getStringArrayList("strengthenList") as ArrayList<String>
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_tab1, container, false)
+        var recyclerView : RecyclerView = view.findViewById(R.id.rv_frag1)
+        var adapter = FragAdapter(requireContext())
+
+        var diseaseList = arguments?.getStringArrayList("diseaseList") as ArrayList<String>
+        var strengthenList = arguments?.getStringArrayList("strengthenList") as ArrayList<String>
+
         videoRef.get().addOnSuccessListener {
-            dataList = ArrayList()
-            val allVideo = it.getValue() as Map<String, Map<String,Map<String,Map<String,Int>>>>
-
+            dataList.clear()
+            var allVideo = it.getValue() as Map<String, Map<String,Map<String,Map<String,Int>>>>
             for (disease in diseaseList){
                 val video_list = allVideo[disease] as Map<String, Map<String, Map<String, Int>>>
                 for ((vId, vStrengthen) in video_list) {
@@ -65,25 +73,12 @@ class Tab1 : Fragment() {
                     }
                 }
             }
-
-            adapter.dataList = dataList
-            adapter.notifyDataSetChanged()
         }
-        adapter = FragAdapter(requireContext())
+
         adapter.dataList = dataList
-        adapter.notifyDataSetChanged()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_tab1, container, false)
-
-        var recyclerView : RecyclerView = view.findViewById(R.id.rv_frag1)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
+//        adapter.notifyDataSetChanged()
         // Inflate the layout for this fragment
         return view
     }
