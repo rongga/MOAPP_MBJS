@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,20 +32,46 @@ private val STRENGTHEN = mapOf<String, String>(
 
 
 class Tab1 : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    lateinit var adapter: FragAdapter
     var dataList = ArrayList<WorkoutData>()
     val database = Firebase.database
     val videoRef = database.getReference("video")
+    lateinit var diseaseList: ArrayList<String>
+    lateinit var strengthenList: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        diseaseList = arguments?.getStringArrayList("diseaseList") as ArrayList<String>
+        strengthenList = arguments?.getStringArrayList("strengthenList") as ArrayList<String>
+        videoRef.get().addOnSuccessListener {
+            dataList = ArrayList()
+            val allVideo = it.getValue() as Map<String, Map<String,Map<String,Map<String,Int>>>>
+
+            for (disease in diseaseList){
+                val video_list = allVideo[disease] as Map<String, Map<String, Map<String, Int>>>
+                for ((vId, vStrengthen) in video_list) {
+                    var sNameTmp = ArrayList<String>()
+                    var check = false
+                    for ((sName,sBool) in vStrengthen["strengthen"] as Map<String,Int>){
+                        if (sBool == 1){
+                            if (strengthenList.contains(sName)){
+                                sNameTmp.add(STRENGTHEN[sName]!!)
+                                check = true
+                            }
+                        }
+                    }
+                    if (check) {
+                        dataList.add(WorkoutData(DISEASE[disease]!!, sNameTmp.joinToString(separator = ", "), vId))
+                    }
+                }
+            }
+
+            adapter.dataList = dataList
+            adapter.notifyDataSetChanged()
         }
+        adapter = FragAdapter(requireContext())
+        adapter.dataList = dataList
+        adapter.notifyDataSetChanged()
     }
 
     override fun onCreateView(
@@ -52,71 +79,12 @@ class Tab1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_tab1, container, false)
-        var diseaseList: ArrayList<String>
-        var strengthenList: ArrayList<String>
+
         var recyclerView : RecyclerView = view.findViewById(R.id.rv_frag1)
-        var adapter = FragAdapter(requireContext())
-
-        diseaseList = arguments?.getStringArrayList("diseaseList") as ArrayList<String>
-        strengthenList = arguments?.getStringArrayList("strengthenList") as ArrayList<String>
-
-        videoRef.addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val allVideo = snapshot.getValue() as Map<String, Map<String,Map<String,Map<String,Int>>>>
-
-                for (disease in diseaseList){
-                    val video_list = allVideo[disease] as Map<String, Map<String, Map<String, Int>>>
-                    for ((vId, vStrengthen) in video_list) {
-                        var sNameTmp = ArrayList<String>()
-                        var check = false
-                        for ((sName,sBool) in vStrengthen["strengthen"] as Map<String,Int>){
-                            if (sBool == 1){
-                                if (strengthenList.contains(sName)){
-                                    sNameTmp.add(STRENGTHEN[sName]!!)
-                                    check = true
-                                }
-                            }
-                        }
-                        if (check) {
-                            dataList.add(WorkoutData(DISEASE[disease]!!, sNameTmp.joinToString(separator = ","), vId))
-                            println(vId)
-                        }
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-        adapter.dataList = dataList
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        //adapter.notifyDataSetChanged()
-
         // Inflate the layout for this fragment
         return view
-    }
-
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Tab1.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Tab1().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

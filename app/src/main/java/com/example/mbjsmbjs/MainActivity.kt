@@ -27,14 +27,16 @@ class MainActivity : AppCompatActivity() {
     lateinit var tab2: Tab2
     lateinit var tab3: Tab3
 
-    var user: Map<*,*>? = null
+    lateinit var user: Map<*,*>
+    lateinit var diseaseList: ArrayList<String>
+    lateinit var strengthenList: ArrayList<String>
 
     val database = Firebase.database
     val userRef = database.getReference("userInfo")
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+
         val bundle = Bundle()
         setContentView(R.layout.activity_main)
 
@@ -47,41 +49,35 @@ class MainActivity : AppCompatActivity() {
 
         // firebase code
         FirebaseApp.initializeApp(this)
-        userRef.addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                user = snapshot.child("C8ATnnxBGXbpkq10t45FqkFfqgr2").getValue() as Map<*, *>
-                var diseaseList = ArrayList<String>()
-                var strengthenList = ArrayList<String>()
+        userRef.get().addOnSuccessListener {
+            user = it.child("C8ATnnxBGXbpkq10t45FqkFfqgr2").getValue() as Map<*, *>
+            diseaseList = ArrayList<String>()
+            strengthenList = ArrayList<String>()
 
-                var mDiseases = user!!["disease"] as Map<*, *>
-                for ((k, v) in mDiseases) {
-                    if (v == true){
-                        diseaseList.add(k as String)
-                    }
+            var mDiseases = user!!["disease"] as Map<*, *>
+            for ((k, v) in mDiseases) {
+                if (v == true){
+                    diseaseList.add(k as String)
                 }
-                var mStrengthen = user!!["strengthen"] as Map<*, *>
-                for ((k, v) in mStrengthen) {
-                    if (v == true){
-                        strengthenList.add(k as String)
-                    }
+            }
+            var mStrengthen = user!!["strengthen"] as Map<*, *>
+            for ((k, v) in mStrengthen) {
+                if (v == true){
+                    strengthenList.add(k as String)
                 }
-                bundle.putStringArrayList("strengthenList", strengthenList)
-                bundle.putStringArrayList("diseaseList", diseaseList)
-                tab1.arguments = bundle
-
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-
+            bundle.remove("strengthenList")
+            bundle.remove("diseaseList")
+            bundle.putStringArrayList("strengthenList", strengthenList)
+            bundle.putStringArrayList("diseaseList", diseaseList)
+            tab1.arguments = bundle
+        }
         // 프레그먼트 클래스 자체를 객체화 했네 ㅋ
         supportFragmentManager.beginTransaction().add(R.id.fl_main, tab1).commit()
         //이건 시작 프레그먼트를 지정
 
         var tabLayout : TabLayout = findViewById<TabLayout>(R.id.tl_main);
-        var frameLayout : FrameLayout = findViewById(R.id.fl_main);
+        var frameLayout : FrameLayout = findViewById(R.id.fl_main)
         tabLayout.addTab(tabLayout.newTab().setText("추천 운동"))
         tabLayout.addTab(tabLayout.newTab().setText("추천 식단"))
         tabLayout.addTab(tabLayout.newTab().setText("커뮤니티"))

@@ -26,29 +26,15 @@ class FragAdapter(private val context: Context) :
         private val diseases : TextView = itemView.findViewById(R.id.diseaseTextView)
         private val strengthen: TextView = itemView.findViewById(R.id.strengthenTextView)
 
-
-
-//        private val itemImage : ImageButton = itemView.findViewById(R.id.iv_itemOfFrag1)
-//        private val itemWorkoutName : TextView = itemView.findViewById(R.id.tv_itemOfFrag1_nameOfWorkout)
-//        private val itemWorkoutTarget : TextView = itemView.findViewById(R.id.tv_itemOfFrag1_targetOfWorkout)
-//        private val itemWorkoutHardness : TextView = itemView.findViewById(R.id.tv_itemOfFrag1_hardness)
-
         fun bind(item : WorkoutData){
-            lifecycleRegistry.addObserver(video)
+//            lifecycleRegistry.addObserver(video)
             video.addYouTubePlayerListener(object: AbstractYouTubePlayerListener(){
                 override fun onReady(youTubePlayer: YouTubePlayer){
-                    val vid = item.vid
-                    youTubePlayer.cueVideo(vid, 0f)
+                    youTubePlayer.cueVideo(item.vid, 0f)
                 }
             })
-
-
             diseases.setText(item.disease)
             strengthen.setText(item.strengthen)
-
-//            itemWorkoutName.setText(item.name)
-//            itemWorkoutTarget.setText(item.target)
-//            itemWorkoutHardness.setText(item.hardness.toString())
         }
     }
 
@@ -58,7 +44,6 @@ class FragAdapter(private val context: Context) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_frag1,parent,false)
-        println("onCreateViewHolder")
         lifecycleRegistry = LifecycleRegistry(this)
         return ViewHolder(view)
     }
