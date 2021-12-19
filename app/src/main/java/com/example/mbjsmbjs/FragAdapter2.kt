@@ -22,8 +22,6 @@ import java.net.MalformedURLException
 import java.net.URL
 
 
-
-
 class FragAdapter2(private val context: Context) :
     RecyclerView.Adapter<FragAdapter2.ViewHolder>() {
 

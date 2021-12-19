@@ -5,5 +5,6 @@ data class CommunityData(
     var name : String,
     var title : String,
     val content : String,
+    val date: String,
     val likes : Int
 )

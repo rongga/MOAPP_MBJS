@@ -11,9 +11,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class Tab2 : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     val database = Firebase.database
     val foodRef = database.getReference("food")
     var dataList = ArrayList<DietData>()

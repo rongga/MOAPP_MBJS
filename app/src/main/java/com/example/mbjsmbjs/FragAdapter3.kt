@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FragAdapter3(private  val context: Context) :
     RecyclerView.Adapter<FragAdapter3.ViewHolder>() {
@@ -22,6 +26,14 @@ class FragAdapter3(private  val context: Context) :
         private val itemCommunityContent : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_content)
 
         fun bind(item : CommunityData){
+            CoroutineScope(Dispatchers.Main).launch {
+                val bitmap = withContext(Dispatchers.IO){
+                    ImageLoader.loadImage(item.image)
+                }
+                itemImage.setImageBitmap(bitmap)
+            }
+            itemCommunityTitle.setText(item.title)
+            itemCommunityDate.setText(item.date)
             itemCommunityName.setText(item.name)
             itemCommunityContent.setText(item.content)
         }
