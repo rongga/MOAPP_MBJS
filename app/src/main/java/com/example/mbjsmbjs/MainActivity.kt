@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.renderscript.Sampler
 import android.util.Log
 import android.widget.FrameLayout
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.mbjsmbjs.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var tab1: Tab1
     lateinit var tab2: Tab2
     lateinit var tab3: Tab3
+    lateinit var setting : Settings
 
     lateinit var user: Map<*,*>
     lateinit var diseaseList: ArrayList<String>
@@ -46,7 +49,15 @@ class MainActivity : AppCompatActivity() {
         tab1.arguments = bundle
         tab2 = Tab2()
         tab3 = Tab3()
+        setting = Settings()
 
+        var settingButton : ImageButton = findViewById<ImageButton>(R.id.setting_button)
+
+        settingButton.setOnClickListener(){
+
+            val intent = Intent(this, Settings::class.java)
+            startActivity(intent)
+        }
         // firebase code
         FirebaseApp.initializeApp(this)
         userRef.get().addOnSuccessListener {

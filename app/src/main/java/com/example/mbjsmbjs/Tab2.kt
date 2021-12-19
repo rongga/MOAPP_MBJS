@@ -11,20 +11,17 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class Tab2 : Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
     val database = Firebase.database
     val foodRef = database.getReference("food")
     var dataList = ArrayList<DietData>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_tab2, container, false)
-        var recyclerView : RecyclerView = view.findViewById(R.id.rv_frag2)
-        var adapter = FragAdapter2(requireContext())
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         foodRef.get().addOnSuccessListener {
-            dataList.clear()
+            dataList = ArrayList<DietData>()
             var foodList = it.getValue() as ArrayList<Map<*,*>>
             for (food in foodList) {
                 if (food != null){
@@ -33,7 +30,18 @@ class Tab2 : Fragment() {
                 }
             }
         }
+    }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_tab2, container, false)
+
+        var recyclerView : RecyclerView = view.findViewById(R.id.rv_frag2)
+
+
+        var adapter = FragAdapter2(requireContext())
         adapter.dataList = dataList
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

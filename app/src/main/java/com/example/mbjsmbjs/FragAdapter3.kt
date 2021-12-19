@@ -17,13 +17,11 @@ class FragAdapter3(private  val context: Context) :
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val itemImage : ImageButton = itemView.findViewById(R.id.iv_itemOfFrag1)
         private val itemCommunityName : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_name)
-        private val itemCommunityTitle : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_title)
         private val itemCommunityContent : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_content)
         private val itemCommunityLikes : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_likes)
 
         fun bind(item : CommunityData){
             itemCommunityName.setText(item.name)
-            itemCommunityTitle.setText(item.title)
             itemCommunityContent.setText(item.content)
             itemCommunityLikes.setText(item.likes.toString())
         }
