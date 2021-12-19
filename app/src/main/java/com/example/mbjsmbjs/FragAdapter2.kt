@@ -31,8 +31,8 @@ class FragAdapter2(private val context: Context) :
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val itemImage : ImageButton = itemView.findViewById(R.id.iv_itemOfFrag1)
-        private val itemWorkoutName : TextView = itemView.findViewById(R.id.tv_itemOfFrag1_nameOfWorkout)
+        private val itemImage : ImageButton = itemView.findViewById(R.id.foodImageButton)
+        private val itemWorkoutName : TextView = itemView.findViewById(R.id.foodItemName)
 
         fun bind(item : DietData){
             CoroutineScope(Dispatchers.Main).launch {
