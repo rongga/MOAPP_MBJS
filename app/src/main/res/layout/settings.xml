@@ -29,7 +29,7 @@
 
         <TextView
             android:layout_margin="5dp"
-            android:text="❤ 신형진 회원님\n무병장수하세요!️❤ "
+            android:text="❤ 무병장수하세요!️❤ "
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="30dp"
@@ -79,18 +79,6 @@
             android:clickable="true"
             android:text="💙 2조"
             android:gravity="center"
-            android:textSize="30dp"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
-
-        <TextView
-            android:id="@+id/members"
-            android:layout_margin="5dp"
-            android:clickable="true"
-            android:text="💜 이재준 정영준"
-           android:gravity="center"
             android:textSize="30dp"
             android:background="@color/black"
             android:textColor="@color/white"

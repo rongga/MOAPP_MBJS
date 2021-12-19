@@ -15,8 +15,6 @@ class Settings : AppCompatActivity() {
         var logoutBtn : TextView = findViewById<TextView>(R.id.logout)
         var modifyInfoBtn : TextView = findViewById<TextView>(R.id.modify_info)
         var moappBtn : TextView = findViewById<TextView>(R.id.moapp1)
-        var teamBtn : TextView = findViewById<TextView>(R.id.team2)
-        var memberBtn : TextView = findViewById<TextView>(R.id.members)
 
         backBtn.setOnClickListener(){
             val intent = Intent(this, MainActivity::class.java)
@@ -34,12 +32,6 @@ class Settings : AppCompatActivity() {
         }
         moappBtn.setOnClickListener(){
             Toast.makeText(getApplicationContext(), "정창수 교수님 항상 건강하세요!", Toast.LENGTH_SHORT).show();
-        }
-        teamBtn.setOnClickListener(){
-            Toast.makeText(getApplicationContext(), "팀플 참여 좀 하지?", Toast.LENGTH_SHORT).show();
-        }
-        memberBtn.setOnClickListener(){
-            Toast.makeText(getApplicationContext(), "이재준 정영준만 참여", Toast.LENGTH_SHORT).show();
         }
     }
 }
