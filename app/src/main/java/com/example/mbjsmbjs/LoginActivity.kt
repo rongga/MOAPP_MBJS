@@ -6,10 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.google.firebase.FirebaseApp
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import org.w3c.dom.Text
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
         registerBtn.setOnClickListener(){
-            val intentRegi = Intent(this,RegiActivity::class.java)
+            val intentRegi = Intent(this,RegiNameActivity::class.java)
             startActivity(intentRegi)
         }
 

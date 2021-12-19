@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    tools:context=".RegiHeightActivity">
+
+
+    <Button
+        android:id="@+id/heightButton"
+        android:layout_width="161dp"
+        android:layout_height="58dp"
+        android:text="다음"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/heightView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="키를 입력해주세요"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/heightEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/heightEdit"
+        android:layout_width="277dp"
+        android:layout_height="73dp"
+        android:ems="10"
+        android:hint="키"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/heightButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/heightSideView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:text="cm"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/heightButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/heightEdit"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

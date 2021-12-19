@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MBJSMBJS">
-        <activity android:name=".RegiActivity"></activity>
+        <activity android:name=".RegiNameActivity"></activity>
+        <activity android:name=".RegiAgeActivity"></activity>
+        <activity android:name=".RegiHeightActivity"></activity>
+        <activity android:name=".RegiWeightActivity"></activity>
+        <activity android:name=".RegiDiseaseActivity"></activity>
+        <activity android:name=".RegiStrengthenActivity"></activity>
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
