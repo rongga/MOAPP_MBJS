@@ -15,6 +15,8 @@
         <activity android:name=".RegiWeightActivity"></activity>
         <activity android:name=".RegiDiseaseActivity"></activity>
         <activity android:name=".RegiStrengthenActivity"></activity>
+        <activity android:name=".FoodDetailActivity"></activity>
+        <activity android:name=".Settings"></activity>
 
         <activity
             android:name=".LoginActivity"

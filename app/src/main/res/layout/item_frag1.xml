@@ -10,27 +10,55 @@
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/videoItem"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:weightSum="10"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="60dp">
+    <TextView
+        android:id="@+id/strengthenTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="운동 부위"
+        android:textColor="#ffff0000"
+        android:textAlignment="center"
+        android:textSize="30dp" />
+    <TextView
+        android:id="@+id/strengthenTextViewAppendix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="강화와 "
+        android:textColor="#ffff0000"
+        android:textAlignment="center"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/diseaseTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="30dp"
         android:layout_marginVertical="10dp"
-        android:text="질병" />
+        android:text="질병"
+        android:textColor="#ffff0000"
+        android:textAlignment="center"
+        android:textSize="30dp" />
 
     <TextView
-        android:id="@+id/strengthenTextView"
-        android:layout_width="match_parent"
+        android:id="@+id/diseaseTextViewAppendix"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="에 좋은 운동입니다."
+        android:textColor="#ffff0000"
         android:textAlignment="center"
-        android:textSize="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="50dp"
-        android:text="운동 부위" />
+        android:textSize="20dp" />
 
 
+        </LinearLayout>
 </LinearLayout>
