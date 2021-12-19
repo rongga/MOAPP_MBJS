@@ -62,6 +62,7 @@
             android:layout_height="100dp"/>
 
         <TextView
+            android:id="@+id/moapp1"
             android:layout_margin="5dp"
             android:clickable="true"
             android:text="💚 모바일앱프로그래밍1"
@@ -73,6 +74,7 @@
             android:layout_height="100dp"/>
 
         <TextView
+            android:id="@+id/team2"
             android:layout_margin="5dp"
             android:clickable="true"
             android:text="💙 2조"
@@ -84,6 +86,7 @@
             android:layout_height="100dp"/>
 
         <TextView
+            android:id="@+id/members"
             android:layout_margin="5dp"
             android:clickable="true"
             android:text="💜 이재준 정영준"

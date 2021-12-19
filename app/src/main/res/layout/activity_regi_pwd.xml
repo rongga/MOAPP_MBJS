@@ -6,11 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
-    tools:context=".RegiAgeActivity">
-
+    tools:context=".RegiNameActivity">
 
     <Button
-        android:id="@+id/ageButton"
+        android:id="@+id/pwdButton"
         android:layout_width="161dp"
         android:layout_height="58dp"
         android:text="다음"
@@ -20,42 +19,41 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/ageView"
+        android:id="@+id/pwdView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="출생연도를 입력해주세요."
+        android:text="비밀번호를 입력해주세요."
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/ageEdit"
+        app:layout_constraintBottom_toTopOf="@+id/pwdEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/ageEdit"
+        android:id="@+id/pwdEdit"
         android:layout_width="277dp"
         android:layout_height="73dp"
         android:ems="10"
-        android:hint="출생연도"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/ageButton"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/pwdButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/ageSideView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:text="년"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/ageButton"
+    <EditText
+        android:id="@+id/pwdEdit2"
+        android:layout_width="277dp"
+        android:layout_height="73dp"
+        android:ems="10"
+        android:hint="비밀번호 재확인"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/ageEdit"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496" />
+        app:layout_constraintVertical_bias="0.553" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

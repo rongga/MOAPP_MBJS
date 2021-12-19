@@ -16,6 +16,8 @@ class FragAdapter3(private  val context: Context) :
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val itemImage : ImageButton = itemView.findViewById(R.id.iv_itemOfFrag1)
+        private val itemCommunityTitle : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_title)
+        private val itemCommunityDate : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_date)
         private val itemCommunityName : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_name)
         private val itemCommunityContent : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_content)
 

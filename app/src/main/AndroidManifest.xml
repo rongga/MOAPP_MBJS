@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MBJSMBJS">
+        <activity android:name=".RegiActivity"></activity>
+        <activity android:name=".RegiPwdActivity"></activity>
         <activity android:name=".RegiNameActivity"></activity>
         <activity android:name=".RegiAgeActivity"></activity>
         <activity android:name=".RegiHeightActivity"></activity>

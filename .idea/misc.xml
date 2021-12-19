@@ -26,7 +26,9 @@
         <entry key="app/src/main/res/layout/activity_regi_age.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/activity_regi_disease.xml" value="0.21920289855072464" />
         <entry key="app/src/main/res/layout/activity_regi_height.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/activity_regi_idpwd.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/activity_regi_name.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/activity_regi_pwd.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/activity_regi_strengthen.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/activity_regi_weight.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/food_detail.xml" value="0.23020833333333332" />

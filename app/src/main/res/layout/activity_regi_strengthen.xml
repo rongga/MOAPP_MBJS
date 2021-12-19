@@ -13,6 +13,7 @@
         android:id="@+id/strengthenButton"
         android:layout_width="161dp"
         android:layout_height="58dp"
+        android:layout_marginBottom="60dp"
         android:text="가입하기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,13 +23,27 @@
         android:id="@+id/strengthenView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="특히 건강해지고 싶은 곳이 있나요?"
+        android:layout_marginTop="100dp"
+        android:text="특히 건강해지고 \n싶은 곳이 있나요?"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="100dp"
+        android:gravity="left"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54">
 
     <CheckBox
         android:id="@+id/armsCheckBox"
@@ -72,16 +87,6 @@
         app:layout_constraintTop_toBottomOf="@+id/coreCheckBox" />
 
     <CheckBox
-        android:id="@+id/dietCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="다이어트"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chestCheckBox" />
-
-    <CheckBox
         android:id="@+id/legsCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,4 +96,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dietCheckBox" />
 
+    <CheckBox
+        android:id="@+id/dietCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다이어트"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chestCheckBox" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

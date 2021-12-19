@@ -14,6 +14,7 @@
         android:layout_width="161dp"
         android:layout_height="58dp"
         android:text="다음"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -22,7 +23,8 @@
         android:id="@+id/heightView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="키를 입력해주세요"
+        android:text="키를 입력해주세요."
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="40dp"
         app:layout_constraintBottom_toTopOf="@+id/heightEdit"
@@ -36,7 +38,7 @@
         android:layout_height="73dp"
         android:ems="10"
         android:hint="키"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/heightButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,9 +50,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:text="cm"
+        android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/heightButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/heightEdit"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503" />
 </androidx.constraintlayout.widget.ConstraintLayout>
