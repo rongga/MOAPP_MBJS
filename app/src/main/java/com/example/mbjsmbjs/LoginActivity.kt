@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import android.view.View;
+
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -29,14 +32,19 @@ class LoginActivity : AppCompatActivity() {
 
             // 파베에서 유저 있는지
 
+            var t1 = Toast.makeText(this, "회원님 무병장수하세요!", Toast.LENGTH_SHORT)
+            t1.show()
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
         }
         registerBtn.setOnClickListener(){
+
             val intentRegi = Intent(this,RegiNameActivity::class.java)
             startActivity(intentRegi)
         }
 
     }
+
 }

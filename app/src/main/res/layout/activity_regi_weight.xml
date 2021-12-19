@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="몸무게를 입력해주세요"
+        android:textStyle="bold"
         android:textSize="40dp"
         app:layout_constraintBottom_toTopOf="@+id/weightEdit"
         app:layout_constraintEnd_toEndOf="parent"

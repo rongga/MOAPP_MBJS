@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:text="특히 건강해지고 싶은 곳이 있나요?"
+        android:textStyle="bold"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

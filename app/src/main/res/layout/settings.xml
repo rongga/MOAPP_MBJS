@@ -24,11 +24,13 @@
             android:focusable="true"
             android:layout_gravity="right"
             android:text="뒤로 가기"
+            android:textStyle="bold"
             android:textSize="20dp" />
 
         <TextView
             android:layout_margin="5dp"
-            android:text="❤ 신형진 회원님\n만수무강하세요!️❤ "
+            android:text="❤ 신형진 회원님\n무병장수하세요!️❤ "
+            android:textStyle="bold"
             android:gravity="center"
             android:textSize="30dp"
             android:textColor="@color/black"
@@ -36,9 +38,22 @@
             android:layout_height="200dp"/>
 
         <TextView
+            android:id="@+id/modify_info"
             android:layout_margin="5dp"
             android:clickable="true"
-            android:text="🧡 나의 신체지표 확인"
+            android:text="🧡 회원 정보 수정️"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:text="💛 로그아️웃"
             android:gravity="center"
             android:textSize="30dp"
             android:background="@color/black"
@@ -49,7 +64,7 @@
         <TextView
             android:layout_margin="5dp"
             android:clickable="true"
-            android:text="💛 회원 정보 수정️"
+            android:text="💚 모바일앱프로그래밍1"
             android:gravity="center"
             android:textSize="30dp"
             android:background="@color/black"
@@ -60,7 +75,7 @@
         <TextView
             android:layout_margin="5dp"
             android:clickable="true"
-            android:text="💚 로그아️웃"
+            android:text="💙 2조"
             android:gravity="center"
             android:textSize="30dp"
             android:background="@color/black"
@@ -71,29 +86,7 @@
         <TextView
             android:layout_margin="5dp"
             android:clickable="true"
-            android:text="💙 모바일앱프로그래밍1"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
-
-        <TextView
-            android:layout_margin="5dp"
-            android:clickable="true"
-            android:text="💜 2조"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
-
-        <TextView
-            android:layout_margin="5dp"
-            android:clickable="true"
-            android:text="🤎 이재준 정영준"
+            android:text="💜 이재준 정영준"
            android:gravity="center"
             android:textSize="30dp"
             android:background="@color/black"

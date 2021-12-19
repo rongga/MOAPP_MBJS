@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:text="특별한 질병이 있나요?"
+        android:textStyle="bold"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
