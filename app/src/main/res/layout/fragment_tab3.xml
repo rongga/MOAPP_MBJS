@@ -10,6 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/writingButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_margin="10dp"
+            android:text="글쓰기" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_frag3"
             android:layout_width="match_parent"

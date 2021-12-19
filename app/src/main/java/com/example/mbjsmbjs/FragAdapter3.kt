@@ -18,12 +18,10 @@ class FragAdapter3(private  val context: Context) :
         private val itemImage : ImageButton = itemView.findViewById(R.id.iv_itemOfFrag1)
         private val itemCommunityName : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_name)
         private val itemCommunityContent : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_content)
-        private val itemCommunityLikes : TextView = itemView.findViewById(R.id.tv_itemOfFrag3_likes)
 
         fun bind(item : CommunityData){
             itemCommunityName.setText(item.name)
             itemCommunityContent.setText(item.content)
-            itemCommunityLikes.setText(item.likes.toString())
         }
     }
 
